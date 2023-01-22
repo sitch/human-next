@@ -61,6 +61,12 @@ class RunHuman extends Component<Props, State> {
       const interpolated = this.human.next(this.human.result); // smoothen result using last-known results
       this.human.draw.canvas(this.video, this.canvas); // draw canvas to screen
       this.human.draw.all(this.canvas, interpolated); // draw labels, boxes, lines, etc.
+
+      const face = this.human.result.face[0]
+      if(face.gender === "female" && face.age === 23.7) {
+        console.log({face})
+        alert("female face static asset found!")
+      }
     }
     status(this.video.paused ? 'paused' : `fps: ${this.fps.toFixed(1).padStart(5, ' ')}`); // write status
     return null;
